@@ -1,0 +1,211 @@
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Noto Sans KR',-apple-system,sans-serif}
+.phone{background:#000;border-radius:48px;padding:11px;width:300px;height:650px;margin:0 auto;box-shadow:0 0 0 1px #2a2a2a,0 24px 64px rgba(0,0,0,0.6)}
+.screen{background:#1C1C1E;border-radius:39px;width:100%;height:100%;display:flex;flex-direction:column;overflow:hidden;position:relative}
+.island{width:72px;height:22px;background:#000;border-radius:20px;margin:10px auto 0;flex-shrink:0}
+.hdr{padding:5px 16px 5px;display:flex;align-items:center;flex-shrink:0}
+.back{background:none;border:none;cursor:pointer;color:#fff;font-size:20px;padding:0;line-height:1;margin-right:4px;opacity:0.85;flex-shrink:0}
+.hdr-title{font-size:13px;font-weight:700;color:#fff;flex:1;text-align:center;white-space:nowrap}
+.keep-btn{
+  font-size:11px;
+  color:#8E8E93;
+  background:none;
+  border:none;
+  cursor:pointer;
+  font-family:'Noto Sans KR',sans-serif;
+  padding:0;
+  flex-shrink:0;
+  white-space:nowrap; /* 핵심 수정 */
+  word-break:keep-all;
+}
+.main-card{background:#2C2C2E;margin:0 12px;border-radius:20px;overflow:hidden;flex-shrink:0}
+.char-area{padding:10px 14px 8px;text-align:center;position:relative;background:radial-gradient(ellipse at 50% 100%,#0A3A5C 0%,#141428 65%,transparent 100%)}
+.top-row{display:grid;grid-template-columns:1fr 1fr;align-items:center;margin-bottom:8px;gap:4px}
+.arctic-pill{background:rgba(255,255,255,0.1);border:0.5px solid rgba(255,255,255,0.15);border-radius:20px;height:20px;padding:0 8px;display:flex;align-items:center;gap:4px;justify-self:start}
+.arctic-pill span{font-size:8px;color:#fff;font-weight:600;white-space:nowrap;line-height:1}
+.a-dot{width:4px;height:4px;border-radius:50%;background:#FF453A;flex-shrink:0;animation:blink 1.5s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.xp-badge{background:rgba(10,132,255,0.2);border:0.5px solid rgba(10,132,255,0.6);border-radius:20px;height:20px;padding:0 8px;display:flex;align-items:center;justify-content:center;justify-self:end}
+.xp-badge span{font-size:8px;color:#0A84FF;font-weight:700;white-space:nowrap;line-height:1}
+.g-emoji{font-size:62px;line-height:1;display:block;filter:drop-shadow(0 6px 20px rgba(100,180,255,0.35));transition:all 0.5s}
+.g-emoji.wilt{animation:wlt 2s infinite}
+@keyframes wlt{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
+.g-name{font-size:15px;font-weight:700;color:#fff;margin-top:6px}
+.g-sub{font-size:10px;color:#8E8E93;margin-top:2px;font-weight:400}
+.bars{padding:9px 14px 10px;display:flex;flex-direction:column;gap:6px}
+.bar-row{display:flex;align-items:center;gap:8px}
+.bar-lbl{font-size:10px;font-weight:700;color:#fff;width:38px;flex-shrink:0;white-space:nowrap}
+.bar-bg{flex:1;height:5px;background:#3A3A3C;border-radius:3px;overflow:hidden}
+.bar-fill{height:100%;border-radius:3px;transition:width 0.6s}
+.bar-val{font-size:10px;font-weight:700;width:36px;text-align:right;flex-shrink:0}
+.stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;padding:8px 12px 0;flex-shrink:0}
+.st{background:#2C2C2E;border-radius:12px;padding:8px 6px;text-align:center}
+.st-lbl{font-size:9px;color:#8E8E93;margin-bottom:3px;font-weight:400}
+.st-val{font-size:15px;font-weight:700;color:#fff;line-height:1.2}
+.st-u{font-size:9px;font-weight:400;color:#8E8E93}
+.tabs{display:flex;padding:0 12px;margin-top:8px;border-bottom:0.5px solid #3A3A3C;flex-shrink:0}
+.tab{flex:1;text-align:center;padding:7px 0;font-size:11px;font-weight:500;color:#8E8E93;border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap}
+.tab.on{color:#0A84FF;border-bottom:2px solid #0A84FF;font-weight:700}
+.scroll-area{flex:1;overflow-y:auto;padding:8px 12px 10px}
+.scroll-area::-webkit-scrollbar{display:none}
+.mc{background:#2C2C2E;border-radius:14px;padding:10px 12px;display:flex;align-items:center;gap:10px;margin-bottom:6px;cursor:pointer}
+.mc.done{opacity:0.38;pointer-events:none}
+.mi{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.mn{font-size:12px;font-weight:500;color:#fff;line-height:1.3}
+.ms{font-size:9px;color:#8E8E93;margin-top:1px;font-weight:400}
+.rp{font-size:9px;font-weight:700;border-radius:20px;padding:3px 8px;white-space:nowrap;border:0.5px solid #0A84FF;color:#0A84FF;flex-shrink:0}
+.rp.ok{border-color:#34C759;color:#34C759}
+.rw{background:#2C2C2E;border-radius:14px;padding:10px 12px;display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.rw-lv{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:#3A3A3C}
+.rw-name{font-size:11px;font-weight:600;color:#fff;line-height:1.3}
+.rw-detail{font-size:9px;color:#8E8E93;margin-top:2px;font-weight:400}
+.cc{background:#2C2C2E;border-radius:14px;padding:11px 12px;margin-bottom:6px}
+.cc-ttl{font-size:9px;font-weight:700;color:#8E8E93;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.3px}
+.fr-row{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px}
+.fr-row::-webkit-scrollbar{display:none}
+.fc{background:#3A3A3C;border-radius:10px;padding:7px 6px;text-align:center;flex-shrink:0;min-width:48px;cursor:pointer}
+.fa{width:26px;height:26px;border-radius:50%;margin:0 auto 3px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700}
+.fn{font-size:8px;color:#8E8E93;font-weight:400}
+.flv{font-size:10px;font-weight:700;color:#fff}
+.g-bar{height:6px;background:#3A3A3C;border-radius:3px;overflow:hidden;margin:7px 0 4px}
+.g-fill{height:100%;background:linear-gradient(90deg,#0A84FF,#34C759);border-radius:3px;width:68%}
+.toast{position:absolute;bottom:58px;left:50%;transform:translateX(-50%);background:rgba(50,50,52,0.97);color:#fff;padding:7px 14px;border-radius:20px;font-size:10px;font-weight:500;white-space:nowrap;display:none;z-index:10;border:0.5px solid #48484A}
+.bnav{background:#1C1C1E;border-top:0.5px solid #3A3A3C;display:flex;padding:8px 0 14px;flex-shrink:0}
+.ni{flex:1;text-align:center;cursor:pointer}
+.ni-ico{font-size:17px}
+.ni-lbl{font-size:8px;color:#8E8E93;margin-top:1px;font-weight:400}
+.ni.on .ni-lbl{color:#0A84FF;font-weight:700}
+.ndot{width:4px;height:4px;border-radius:50%;background:#0A84FF;margin:0 auto 1px;display:none}
+.ni.on .ndot{display:block}
+</style>
+
+<div class="phone"><div class="screen">
+<div class="island"></div>
+<div class="hdr">
+  <button class="back">‹</button>
+  <span class="hdr-title">내 빙하 키우기</span>
+  <button class="keep-btn">보관함</button>
+</div>
+<div class="main-card">
+  <div class="char-area">
+    <div class="top-row">
+      <div class="arctic-pill"><div class="a-dot"></div><span>북극 -18°C · 평년比 +2.1°C</span></div>
+      <div class="xp-badge"><span>XP 2배 이벤트</span></div>
+    </div>
+    <span class="g-emoji" id="gEmoji">🧊</span>
+    <div class="g-name" id="gName">아기 빙하</div>
+    <div class="g-sub" id="gSub">금방 녹을 것 같아요 — 돌봐주세요</div>
+  </div>
+  <div class="bars">
+    <div class="bar-row">
+      <span class="bar-lbl" id="gLv">레벨 1</span>
+      <div class="bar-bg"><div class="bar-fill" id="xpFill" style="width:28%;background:#0A84FF"></div></div>
+      <span class="bar-val" id="xpNum" style="color:#0A84FF">28/100</span>
+    </div>
+    <div class="bar-row">
+      <span class="bar-lbl" style="color:#8E8E93;font-weight:400;font-size:9px;white-space:nowrap">빙하 건강도</span>
+      <div class="bar-bg"><div class="bar-fill" id="hpFill" style="width:74%;background:#0A84FF"></div></div>
+      <span class="bar-val" id="hpNum" style="color:#0A84FF">74%</span>
+    </div>
+  </div>
+</div>
+<div class="stats">
+  <div class="st"><div class="st-lbl">절감 탄소</div><div class="st-val" id="s1">2.4<span class="st-u">kg</span></div></div>
+  <div class="st"><div class="st-lbl">연속 실천</div><div class="st-val">7<span class="st-u">일</span></div></div>
+  <div class="st"><div class="st-lbl">토스포인트</div><div class="st-val" id="s3">340<span class="st-u">P</span></div></div>
+</div>
+<div class="tabs">
+  <div class="tab on" onclick="sw(0,this)">오늘 미션</div>
+  <div class="tab" onclick="sw(1,this)">레벨 혜택</div>
+  <div class="tab" onclick="sw(2,this)">커뮤니티</div>
+</div>
+<div class="scroll-area">
+  <div id="t0">
+    <div class="mc" id="m1" onclick="doM(1,20,80,'버스·지하철 탑승',this)"><div class="mi" style="background:#1C3A5C">🚌</div><div style="flex:1"><div class="mn">버스·지하철 탑승</div><div class="ms">카드 결제 자동 감지</div></div><div class="rp" id="rp1">+20 XP</div></div>
+    <div class="mc" id="m2" onclick="doM(2,30,120,'수퍼빈 페트병 회수',this)"><div class="mi" style="background:#1A3A2A">♻️</div><div style="flex:1"><div class="mn">수퍼빈 페트병 회수</div><div class="ms">QR 스캔 후 투입 자동 적립</div></div><div class="rp" id="rp2">+30 XP</div></div>
+    <div class="mc" id="m3" onclick="doM(3,15,50,'탄소발자국 리포트',this)"><div class="mi" style="background:#2A1A3A">📊</div><div style="flex:1"><div class="mn">탄소발자국 리포트 확인</div><div class="ms">이번 달 소비 분석</div></div><div class="rp" id="rp3">+15 XP</div></div>
+    <div class="mc" id="m4" onclick="doM(4,25,100,'친환경 가맹점 결제',this)"><div class="mi" style="background:#2A2A1A">🌿</div><div style="flex:1"><div class="mn">친환경 가맹점 결제</div><div class="ms">텀블러 카페·제로웨이스트샵 2배</div></div><div class="rp" id="rp4">+25 XP</div></div>
+    <div class="mc" id="m5" onclick="doM(5,50,200,'ESG 펀드 가입',this)"><div class="mi" style="background:#1A3A1A">💹</div><div style="flex:1"><div class="mn">ESG 펀드 가입</div><div class="ms">친환경 ETF·ESG 신규 가입</div></div><div class="rp" id="rp5">+50 XP</div></div>
+  </div>
+  <div id="t1" style="display:none">
+    <div class="rw"><div class="rw-lv" style="background:#1C3A5C"><span style="color:#0A84FF;font-size:11px;font-weight:700">Lv.5</span></div><div style="flex:1"><div class="rw-name">토스포인트 500P + 한정 빙하 스킨</div><div class="rw-detail">달성까지 72 XP 남음</div></div><span style="font-size:10px;font-weight:700;color:#0A84FF;flex-shrink:0">진행중</span></div>
+    <div class="rw"><div class="rw-lv"><span style="color:#34C759;font-size:11px;font-weight:700">Lv.10</span></div><div style="flex:1"><div class="rw-name">제휴 친환경 브랜드 할인쿠폰</div><div class="rw-detail">아로마티카·마린이노베이션 등</div></div><span style="font-size:13px;color:#48484A">🔒</span></div>
+    <div class="rw"><div class="rw-lv"><span style="color:#FFD60A;font-size:11px;font-weight:700">Lv.15</span></div><div style="flex:1"><div class="rw-name">토스뱅크 예금 금리 우대</div><div class="rw-detail">연 0.3%p 우대금리 적용</div></div><span style="font-size:13px;color:#48484A">🔒</span></div>
+    <div class="rw" style="border:0.5px solid #0A84FF;border-radius:14px;padding:10px 12px"><div class="rw-lv" style="background:#0A84FF"><span style="color:#fff;font-size:11px;font-weight:700">Lv.20</span></div><div style="flex:1"><div class="rw-name" style="color:#0A84FF">북극곰 보호단체 유저 명의 기부</div><div class="rw-detail">WWF 공식 인증서 + 앱 메인 전시</div></div><span style="font-size:13px;color:#48484A">🔒</span></div>
+  </div>
+  <div id="t2" style="display:none">
+    <div class="cc">
+      <div class="cc-ttl">친구들 빙하</div>
+      <div class="fr-row">
+        <div class="fc"><div class="fa" style="background:#1C3A5C;color:#0A84FF">지</div><div class="flv">Lv.8</div><div class="fn">지수</div></div>
+        <div class="fc"><div class="fa" style="background:#1A3A2A;color:#34C759">민</div><div class="flv">Lv.4</div><div class="fn">민준</div></div>
+        <div class="fc"><div class="fa" style="background:#3A2A1A;color:#FFD60A">서</div><div class="flv">Lv.12</div><div class="fn">서연</div></div>
+        <div class="fc"><div class="fa" style="background:#2A1A3A;color:#BF5AF2">현</div><div class="flv">Lv.3</div><div class="fn">현우</div></div>
+        <div class="fc" onclick="showT('친구 초대 시 XP +50!')"><div class="fa" style="background:#3A3A3C;color:#8E8E93;font-size:14px">+</div><div class="flv" style="color:#8E8E93">초대</div><div class="fn">친구</div></div>
+      </div>
+    </div>
+    <div class="cc">
+      <div class="cc-ttl">전체 유저 집단 목표</div>
+      <div style="font-size:11px;color:#fff;font-weight:500;line-height:1.4">목표 달성 시 토스뱅크가 실제 기부합니다</div>
+      <div style="display:flex;justify-content:space-between;font-size:9px;color:#8E8E93;margin-top:6px"><span>전체 누적 XP</span><span style="color:#0A84FF;font-weight:700">68% 달성</span></div>
+      <div class="g-bar"><div class="g-fill"></div></div>
+      <div style="font-size:9px;color:#8E8E93">참여자 142,389명 · 목표까지 32% 남음</div>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+<div class="bnav">
+  <div class="ni"><div class="ni-ico">🏠</div><div class="ni-lbl">홈</div></div>
+  <div class="ni on"><div class="ndot"></div><div class="ni-ico">🧊</div><div class="ni-lbl" style="color:#0A84FF">빙하</div></div>
+  <div class="ni"><div class="ni-ico">🛍️</div><div class="ni-lbl">쇼핑</div></div>
+  <div class="ni"><div class="ni-ico">📈</div><div class="ni-lbl">증권</div></div>
+  <div class="ni"><div class="ni-ico">☰</div><div class="ni-lbl">전체</div></div>
+</div>
+</div></div>
+
+<script>
+var xp=28,hp=74,pts=340,done={};
+var stages=[
+  {lv:1,max:100,e:'🧊',n:'아기 빙하',s:'금방 녹을 것 같아요 — 돌봐주세요',wilt:true},
+  {lv:5,max:300,e:'🏔️',n:'안정적인 빙하',s:'조금씩 단단해지고 있어요',wilt:false},
+  {lv:10,max:700,e:'⛰️',n:'피오르드 빙산',s:'장엄한 빙산이 되었어요',wilt:false},
+  {lv:20,max:9999,e:'🌨️',n:'그린란드 빙원',s:'최고 등급 — 북극을 지키고 있어요',wilt:false}
+];
+function gs(){return stages.find(function(s){return xp<s.max;})||stages[3];}
+function render(){
+  var s=gs(),idx=stages.indexOf(s),prev=idx>0?stages[idx-1].max:0;
+  var pct=Math.min(100,Math.round((xp-prev)/(s.max-prev)*100));
+  document.getElementById('gEmoji').textContent=s.e;
+  document.getElementById('gEmoji').className='g-emoji'+(s.wilt?' wilt':'');
+  document.getElementById('gName').textContent=s.n;
+  document.getElementById('gSub').textContent=s.s;
+  document.getElementById('gLv').textContent='레벨 '+s.lv;
+  document.getElementById('xpFill').style.width=pct+'%';
+  document.getElementById('xpNum').textContent=xp+'/'+s.max;
+  var h=Math.max(0,Math.round(hp)),col=h>60?'#0A84FF':h>30?'#FF9F0A':'#FF453A';
+  document.getElementById('hpFill').style.width=h+'%';
+  document.getElementById('hpFill').style.background=col;
+  document.getElementById('hpNum').textContent=h+'%';
+  document.getElementById('hpNum').style.color=col;
+  document.getElementById('s1').innerHTML=(2.4+xp*0.05).toFixed(1)+'<span class="st-u">kg</span>';
+  document.getElementById('s3').innerHTML=pts+'<span class="st-u">P</span>';
+}
+function showT(msg){var t=document.getElementById('toast');t.textContent=msg;t.style.display='block';setTimeout(function(){t.style.display='none';},2200);}
+function doM(id,xg,p,name,el){
+  if(done[id])return;done[id]=true;
+  var prev=gs().lv;xp+=xg;hp=Math.min(100,hp+3);pts+=p;
+  el.classList.add('done');
+  var rp=document.getElementById('rp'+id);
+  if(rp){rp.textContent='완료';rp.className='rp ok';}
+  render();
+  showT(gs().lv>prev?'레벨 업! 🎉':name+' +'+xg+'XP · '+p+'P');
+}
+function sw(i,el){
+  document.querySelectorAll('.tab').forEach(function(t){t.className='tab';});
+  el.className='tab on';
+  ['t0','t1','t2'].forEach(function(id,j){document.getElementById(id).style.display=j===i?'block':'none';});
+}
+setInterval(function(){if(hp>5){hp-=0.3;render();}},8000);
+render();
+</script>
